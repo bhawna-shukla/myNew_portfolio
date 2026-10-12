@@ -1,0 +1,190 @@
+.navbar {
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 1000;
+
+  padding: 18px 45px;
+
+  background: rgba(7, 23, 29, 0.72);
+
+  border-bottom: 1px solid rgba(236, 240, 241, 0.08);
+
+  backdrop-filter: blur(18px);
+}
+
+
+/* CONTAINER */
+
+.navbar-container {
+  max-width: 1450px;
+
+  margin: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.navbar-logo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #ecf0f1;
+
+  text-decoration: none;
+
+  font-size: 23px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.logo-bracket {
+  color: #34995e;
+
+  font-weight: 800;
+}
+
+
+/* NAV LINKS */
+
+.navbar-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.nav-link {
+  position: relative;
+
+  padding: 10px 17px;
+
+  color: #bdc3c7;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  border-radius: 25px;
+
+  transition: all 0.3s ease;
+}
+
+
+/* HOVER */
+
+.nav-link:hover {
+ color: #07171d;
+
+  background: #34995e;
+}
+
+
+/* ACTIVE TAB */
+
+.nav-link.active {
+  color: #07171d;
+
+  background: #34995e;
+
+  box-shadow:
+    0 5px 18px rgba(52, 153, 94, 0.25);
+}
+
+
+/* ACTIVE HOVER */
+
+.nav-link.active:hover {
+  background: #42aa6c;
+
+  box-shadow:
+    0 7px 25px rgba(52, 153, 94, 0.35);
+}
+
+
+/* CONTACT BUTTON */
+
+.contact-link {
+  margin-left: 10px;
+
+  color: #ecf0f1;
+
+  border: 1px solid #34995e;
+
+  background: rgba(52, 153, 94, 0.06);
+}
+
+.contact-link:hover {
+  color: #07171d;
+
+  background: #34995e;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .navbar-logo {
+    font-size: 19px;
+  }
+
+  .navbar-links {
+    gap: 2px;
+  }
+
+  .nav-link {
+    padding: 8px 9px;
+
+    font-size: 12px;
+  }
+
+  .contact-link {
+    display: none;
+  }
+}
+
+
+/* SMALL MOBILE */
+
+@media (max-width: 500px) {
+
+  .navbar {
+    padding: 14px 15px;
+  }
+
+  .navbar-logo {
+    font-size: 17px;
+  }
+
+  .navbar-links {
+    gap: 0;
+  }
+
+  .nav-link {
+    padding: 7px 6px;
+
+    font-size: 11px;
+  }
+}

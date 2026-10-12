@@ -1,0 +1,153 @@
+
+.education-section {
+  padding: 85px 8%;
+  background: #07171d;
+  color: #ecf0f1;
+}
+
+.education-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.education-heading > span {
+  color: #34995e;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.education-heading h2 {
+  font-size: clamp(30px, 5vw, 42px);
+  margin: 12px 0;
+}
+
+.education-heading h2 span {
+  color: #34995e;
+}
+
+.education-heading p {
+  color: #bdc3c7;
+}
+
+.education-timeline {
+  max-width: 750px;
+  margin: auto;
+  border-left: 2px solid rgba(52, 153, 94, 0.5);
+  padding-left: 30px;
+}
+
+.education-item {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+
+.education-dot {
+  position: absolute;
+  left: -65px;
+  top: 18px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid ffffff;
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.education-dot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 500px) {
+  .education-dot {
+    width: 42px;
+    height: 42px;
+    left: -52px;
+  }
+}
+
+.education-card {
+  padding: 25px;
+  border: 1px solid rgba(52, 153, 94, 0.25);
+  border-radius: 16px;
+  background: rgba(52, 153, 94, 0.12);
+  transition: 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateX(6px);
+  border-color: #34995e;
+  box-shadow: 0 8px 25px rgba(52, 153, 94, 0.12);
+}
+
+.education-year {
+  color: #34995e;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.education-card h3 {
+  margin: 12px 0 8px;
+  font-size: 19px;
+}
+
+.education-card h4 {
+  color: #bdc3c7;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+
+.education-card p {
+  color: #bdc3c7;
+  font-size: 13px;
+  margin: 0;
+}
+
+@media (max-width: 500px) {
+  .education-section {
+    padding: 65px 6%;
+  }
+
+  .education-timeline {
+    padding-left: 22px;
+  }
+
+  .education-dot {
+    left: -30px;
+  }
+
+  .education-card {
+    padding: 20px 16px;
+  }
+
+  .education-card h3 {
+    font-size: 17px;
+  }
+}
+
+.education-section {
+  position: relative;
+  border-radius: 70px 70px 0 0;
+  margin-top: 30px;
+  padding-top: 100px;
+   
+}
+
+
+.education-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  padding-bottom: 120px;
+  clip-path: ellipse(150% 100% at 50% 0%);
+}

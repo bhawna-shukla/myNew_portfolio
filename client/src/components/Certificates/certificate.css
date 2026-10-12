@@ -1,0 +1,381 @@
+
+/* ==============================
+   CERTIFICATES SECTION
+============================== */
+
+.certificates-section {
+  position: relative;
+  padding: 90px 7%;
+  background: #07171d;
+  color: #ecf0f1;
+  overflow: hidden;
+}
+
+/* Soft green background glow */
+.certificates-section::before {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: -120px;
+  width: 300px;
+  height: 300px;
+  background: rgba(52, 153, 94, 0.12);
+  filter: blur(100px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.certificates-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.certificate-subtitle {
+  text-align: center;
+  color: #34995e;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.certificates-heading {
+  text-align: center;
+  color: #ecf0f1;
+  font-size: clamp(30px, 4vw, 44px);
+  margin-bottom: 18px;
+}
+
+.certificates-description {
+  max-width: 650px;
+  margin: 0 auto 50px;
+  text-align: center;
+  color: #bdc3c7;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* ==============================
+   CERTIFICATE GRID
+============================== */
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+/* Glassmorphism Card */
+.certificate-card {
+   background: rgba(52, 153, 94, 0.10);
+  border-color: rgba(52, 153, 94, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  border-radius: 28px;
+  backdrop-filter: blur(10px);
+
+  transition: all 0.35s ease;
+}
+
+.certificate-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #34995e,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-8px);
+  background: rgba(52, 153, 94, 0.10);
+  border-color: rgba(52, 153, 94, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+.certificate-card:hover::before {
+  opacity: 1;
+}
+
+/* ==============================
+   CERTIFICATE IMAGE
+============================== */
+
+.certificate-image-wrapper {
+  background: #f5f2eb;
+  border: 1px solid rgba(44, 62, 80, 0.10);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.certificate-image {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  padding: 8px;
+  transition: transform 0.4s ease;
+}
+
+.certificate-card:hover .certificate-image {
+  transform: scale(1.04);
+}
+
+/* .certificate-number {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(52, 153, 94, 0.9);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+} */
+
+/* ==============================
+   CARD CONTENT
+============================== */
+
+.certificate-content {
+  padding: 22px 5px 5px;
+}
+
+.certificate-content h3 {
+  color: #2c3e50;
+}
+
+.certificate-content p {
+  color: #52616b;
+}
+
+.certificate-year {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 7px 14px;
+  border-radius: 50px;
+  background: rgba(52, 153, 94, 0.18);
+  border: 1px solid rgba(52, 153, 94, 0.25);
+  color: #8ee0ac;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ==============================
+   VIEW CERTIFICATE BUTTON
+============================== */
+
+.view-certificate-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 18px;
+  border: 1px solid rgba(52, 153, 94, 0.5);
+  border-radius: 14px;
+  background: rgba(52, 153, 94, 0.18);
+  color: #ecf0f1;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-certificate-btn:hover {
+  background: #34995e;
+  border-color: #34995e;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(52, 153, 94, 0.2);
+}
+
+/* ==============================
+   CERTIFICATE MODAL
+============================== */
+
+.certificate-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: certificateFade 0.25s ease;
+}
+
+.certificate-modal-content {
+  position: relative;
+  width: min(100%, 1000px);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 18px;
+  background: #07171d;
+  border: 1px solid rgba(236, 240, 241, 0.15);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.certificate-modal-content img {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.certificate-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(236, 240, 241, 0.2);
+  border-radius: 50%;
+  background: #07171d;
+  color: #ecf0f1;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.certificate-close-btn:hover {
+  background: #34995e;
+  border-color: #34995e;
+  transform: rotate(90deg);
+}
+
+/* ==============================
+   ANIMATIONS
+============================== */
+
+@keyframes certificateAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes certificateFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==============================
+   TABLET RESPONSIVE
+============================== */
+
+@media (max-width: 900px) {
+  .certificates-section {
+    padding: 75px 5%;
+  }
+
+  .certificates-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .certificate-image {
+    height: 190px;
+  }
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
+
+@media (max-width: 600px) {
+  .certificates-section {
+    padding: 60px 18px;
+  }
+
+  .certificates-heading {
+    font-size: 30px;
+  }
+
+  .certificates-description {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .certificates-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .certificate-card {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .certificate-image {
+    height: 220px;
+  }
+
+  .certificate-content {
+    padding-top: 18px;
+  }
+
+  .certificate-content h3 {
+    font-size: 18px;
+  }
+
+  .certificate-modal {
+    padding: 12px;
+  }
+
+  .certificate-modal-content {
+    padding: 10px;
+    border-radius: 16px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .certificate-card,
+  .certificate-image,
+  .view-certificate-btn,
+  .certificate-close-btn {
+    animation: none;
+    transition: none;
+  }
+
+  .certificate-card:hover,
+  .view-certificate-btn:hover {
+    transform: none;
+  }
+}
