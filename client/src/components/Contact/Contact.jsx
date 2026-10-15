@@ -15,6 +15,9 @@ function Contact() {
     message: "",
   });
 
+  const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -22,46 +25,51 @@ function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus("");
+    setIsSending(true);
 
-    const subject = encodeURIComponent(
-      `Portfolio Contact - ${formData.name}`
-    );
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}`
-    );
+      const data = await response.json();
 
-    const gmailUrl =
-      "https://mail.google.com/mail/?view=cm&fs=1" +
-      "&to=shuklabhawna81@gmail.com" +
-      `&su=${subject}` +
-      `&body=${body}`;
+      if (!response.ok) {
+        throw new Error(data.message || "Message could not be sent.");
+      }
 
-    window.open(gmailUrl, "_blank");
-    setFormData({
-  name: "",
-  email: "",
-  message: "",
-});
+      setStatus("Message sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      setStatus(
+        error.message === "Failed to fetch"
+          ? "Backend is not reachable. Please try again."
+          : error.message || "Something went wrong. Please try again."
+      );
+    } finally {
+      setIsSending(false);
+    }
   };
-  
-
-
 
   return (
     <section id="contact" className="contact-section">
       <div className="contact-container">
         <div className="contact-heading">
           <span className="contact-label">LET'S CONNECT</span>
-
           <h2>
             Contact <span>us</span>
           </h2>
-
           <p>
             Have a project in mind or an opportunity to discuss?
             I'd love to hear from you.
@@ -92,7 +100,6 @@ function Contact() {
               <div className="contact-icon">
                 <FaEnvelope />
               </div>
-
               <div>
                 <span>Email Me</span>
                 <p>shuklabhawna81@gmail.com</p>
@@ -103,7 +110,6 @@ function Contact() {
               <div className="contact-icon">
                 <FaMapMarkerAlt />
               </div>
-
               <div>
                 <span>Location</span>
                 <p>Lucknow, Uttar Pradesh, India</p>
@@ -177,9 +183,19 @@ function Contact() {
               />
             </div>
 
-            <button type="submit" className="contact-submit">
-              Send Message
+            <button
+              type="submit"
+              className="contact-submit"
+              disabled={isSending}
+            >
+              {isSending ? "Sending..." : "Send Message"}
             </button>
+
+            {status && (
+              <p role="status" aria-live="polite">
+                {status}
+              </p>
+            )}
           </form>
         </div>
       </div>
