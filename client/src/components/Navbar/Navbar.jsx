@@ -1,52 +1,98 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import {
+  Menu,
+  X,
+  House,
+  UserRound,
+  Code2,
+  FolderGit2,
+  GraduationCap,
+  Mail,
+} from "lucide-react";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navItems = [
+    { name: "Home", href: "#home", icon: House },
+    { name: "About", href: "#about", icon: UserRound },
+    { name: "Skills", href: "#skills", icon: Code2 },
+    { name: "Projects", href: "#projects", icon: FolderGit2 },
+    { name: "Education", href: "#education", icon: GraduationCap },
+    { name: "Contact", href: "#contact", icon: Mail },
+  ];
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className="navbar">
-
       <div className="navbar-container">
 
-        {/* LOGO */}
-        <Link to="/" className="navbar-logo">
+        {/* DESKTOP LOGO */}
+        <Link to="/" className="navbar-logo" onClick={closeMenu}>
           <span className="logo-bracket">&lt;</span>
           PORTFOLIO
           <span className="logo-bracket">/&gt;</span>
         </Link>
 
-        {/* NAV LINKS */}
+        {/* MOBILE PORTFOLIO LOGO */}
+        <Link to="/" className="mobile-logo" onClick={closeMenu}>
+          <span className="logo-bracket">&lt;</span>
+          PORTFOLIO
+          <span className="logo-bracket">/&gt;</span>
+        </Link>
+
+        {/* DESKTOP LINKS */}
         <div className="navbar-links">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="nav-link"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
 
-          <a href="#home" className="nav-link">
-            Home
-          </a>
+        {/* MOBILE HAMBURGER BUTTON */}
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+        >
+          {menuOpen ? <X size={27} /> : <Menu size={27} />}
+        </button>
 
-          <a href="#about" className="nav-link">
-            About
-          </a>
+        {/* MOBILE ICON MENU */}
+        <div
+          id="mobile-navigation"
+          className={`mobile-nav-menu ${menuOpen ? "active" : ""}`}
+        >
+          {navItems.map((item) => {
+            const Icon = item.icon;
 
-          <a href="#skills" className="nav-link">
-            Skills
-          </a>
-
-          <a href="#projects" className="nav-link">
-            Projects
-          </a>
-
-          <a href="#education" className="nav-link nav-link">
-            Education
-          </a>
-
-          <a href="#contact" className="nav-link contact-link">
-            Contact Me
-          </a>
-
-
-
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                className="mobile-nav-link"
+                aria-label={item.name}
+                title={item.name}
+                onClick={closeMenu}
+              >
+                <Icon size={23} />
+                <span>{item.name}</span>
+              </a>
+            );
+          })}
         </div>
 
       </div>
-
     </nav>
   );
 }

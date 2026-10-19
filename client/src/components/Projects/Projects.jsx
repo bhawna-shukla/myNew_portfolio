@@ -18,7 +18,7 @@ const projects = [
       "A responsive personal portfolio showcasing my skills, projects and web development journey.",
     tech: ["React", "CSS", "JavaScript"],
     liveLink: "#about",
-    githubLink: "https://github.com/bhawna-shukla",
+    githubLink: "https://github.com/bhawna-shukla/myNew_portfolio",
   },
   {
     title: "Computer_Center_Website",
