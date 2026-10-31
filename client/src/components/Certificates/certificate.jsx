@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import "./Certificate.css";
+import "./certificate.css";
 
 const certificates = [
   {
